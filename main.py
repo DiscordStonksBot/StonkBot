@@ -8,6 +8,7 @@ import json
 
 print("Discord v" + discord.__version__)
 with open('C:/Users/sfg99/3D Objects/StonkBot/settings.json') as f: settings = json.load(f)
+with open('C:/Users/sfg99/3D Objects/StonkBot/settings.json') as f: key = json.load(f)
 client = commands.Bot(command_prefix = settings['prefix'])
 
 
@@ -26,4 +27,4 @@ for filename in settings['autoLoad']:
 
 
 
-client.run(settings['token'])
+client.run(key['token'])
