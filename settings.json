@@ -1,4 +1,4 @@
 {
     "prefix" : "$",
-    "autoLoad" : ["misc.py", "stockinfo.py"]
+    "autoLoad" : ["misc.py", "stockinfo.py", "control.py"]
 }

@@ -3,6 +3,9 @@ from discord.ext import commands
 import os
 
 
+DIRPATH = os.path.abspath(os.getcwd())
+FS = os.path.sep
+
 
 class Control(commands.Cog):
     def __init__(self, client):
@@ -13,7 +16,7 @@ class Control(commands.Cog):
     
     @commands.command()
     async def enableall(self, ctx):
-        for filename in os.listdir('C:/Users/sfg99/3D Objects/StonkBot'):
+        for filename in os.listdir(DIRPATH + FS):
             if filename.endswith(".py"):
                 if filename != "main.py":
                     self.client.load_extension(filename[:-3])
@@ -24,7 +27,7 @@ class Control(commands.Cog):
 
     @commands.command()
     async def disableall(self, ctx):
-        for filename in os.listdir('C:/Users/sfg99/3D Objects/StonkBot'):
+        for filename in os.listdir(DIRPATH + FS):
             if filename.endswith(".py"):
                 if filename != "main.py":
                     self.client.unload_extension(filename[:-3])
@@ -37,7 +40,7 @@ class Control(commands.Cog):
     
     @commands.command()
     async def reloadall(self, ctx):
-        for filename in os.listdir('C:/Users/sfg99/3D Objects/StonkBot'):
+        for filename in os.listdir(DIRPATH + FS):
             if filename.endswith(".py"):
                 if filename != "main.py":
                     self.client.unload_extension(filename[:-3])
