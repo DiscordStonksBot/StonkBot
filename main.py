@@ -4,7 +4,7 @@ import os
 import datetime
 import json
 
-DIRPATH = os.path.abspath(os.getcwd()))
+DIRPATH = os.path.abspath(os.getcwd())
 FS = os.path.sep
 
 Directory1 = 'C:/Users/sfg99/3D Objects/StonkBot/settings.json'
