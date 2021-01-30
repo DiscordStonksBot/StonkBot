@@ -4,12 +4,15 @@ import os
 import datetime
 import json
 
+DIRPATH = os.path.abspath(os.getcwd()))
+FS = os.path.sep
+
 Directory1 = 'C:/Users/sfg99/3D Objects/StonkBot/settings.json'
 Directory2 = 'C:/Users/sfg99/3D Objects/StonkBot/secret.json'
 
 print("Discord v" + discord.__version__)
-with open(Directory1) as f: settings = json.load(f)
-with open(Directory2) as f: key = json.load(f)
+with open(DIRPATH+FS+"settings.json") as f: settings = json.load(f)
+with open(DIRPATH+FS+"secret.json") as f: key = json.load(f)
 client = commands.Bot(command_prefix = settings['prefix'])
 
 
