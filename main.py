@@ -19,7 +19,7 @@ client = commands.Bot(command_prefix = settings['prefix'])
 async def on_ready(): print(f'{client.user} has connected to Discord!')
 
 @client.event
-async def on_command_error(ctx, error): await ctx.send(f'Error. Try $help ({error})')
+async def on_command_error(ctx, error): await ctx.send(f'Try $help ({error})')
 
 
 
