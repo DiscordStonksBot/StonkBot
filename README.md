@@ -1,2 +1,2 @@
 # StonkBot
-Discord bot to track stock value and 
+Discord bot HELLO THERE to track stock value and 
