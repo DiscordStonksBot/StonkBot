@@ -1,5 +1,4 @@
 {
-    "token" : "ODA0ODg2MTM0MzUzNTU5NTgy.YBS2oA.AcNhOsKr5JRsM5_27UmiAYj9EYA",
     "prefix" : "$",
     "autoLoad" : ["misc.py", "stockinfo.py"]
 }
