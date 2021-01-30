@@ -4,11 +4,12 @@ import os
 import datetime
 import json
 
-
+Directory1 = 'C:/Users/sfg99/3D Objects/StonkBot/settings.json'
+Directory2 = 'C:/Users/sfg99/3D Objects/StonkBot/secret.json'
 
 print("Discord v" + discord.__version__)
-with open('C:/Users/sfg99/3D Objects/StonkBot/settings.json') as f: settings = json.load(f)
-with open('C:/Users/sfg99/3D Objects/StonkBot/settings.json') as f: key = json.load(f)
+with open(Directory1) as f: settings = json.load(f)
+with open(Directory2) as f: key = json.load(f)
 client = commands.Bot(command_prefix = settings['prefix'])
 
 
