@@ -44,11 +44,14 @@ class StockInfo(commands.Cog):
 
     @commands.command()
     async def shareprice(self, ctx, share=None):
-        await ctx.channel.send (self.getSharePrice(share))
-        
+        await ctx.channel.send (self.getSharePrice(share))   
     
     @commands.command()
     async def sp(self, ctx, share=None):
+        await ctx.channel.send (self.getSharePrice(share))
+
+    @commands.command()
+    async def stockprice(self, ctx, share=None):
         await ctx.channel.send (self.getSharePrice(share))
 
 

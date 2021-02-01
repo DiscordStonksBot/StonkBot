@@ -9,7 +9,7 @@ class Control(commands.Cog):
     def isAdmin(self, ctx):
         print(ctx.message.author.id)
         print(self.client.admins)
-        if (str(ctx.message.author.id) in self.client.admins['admins']):
+        if ((ctx.message.author.id) in self.client.admins['admins']):
             return True
         else:
             return False
