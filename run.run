@@ -1,1 +1,7 @@
-python3 main.py
+while :
+do
+    git pull
+    python3 main.py
+
+done
+
