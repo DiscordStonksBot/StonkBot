@@ -6,29 +6,29 @@ import os, sys
 
 class Control(commands.Cog):
 
-    def isAdmin(ctx):
-        if (ctx.message.author.server_permissions.administrator):
-            return 1
-        elif False:
-            return 2
+    def isAdmin(self, ctx):
+        print(ctx.message.author.id)
+        print(self.client.admins)
+        if (str(ctx.message.author.id) in self.client.admins['admins']):
+            return True
         else:
             return False
-
 
 
     def __init__(self, client):
         self.client = client
 
+
     @commands.command()
     async def enable(self, ctx, extension):
-        if (not isAdmin(ctx)):
+        if (not self.isAdmin(ctx)):
             await ctx.send(f'Error: You are not an admin')
         else:
             self.client.load_extension(extension)
     
     @commands.command()
     async def enableall(self, ctx):
-        if (not isAdmin(ctx)):
+        if (not self.isAdmin(ctx)):
             await ctx.send(f'Error: You are not an admin')
         else:
             for filename in os.listdir('C:/Users/sfg99/3D Objects/StonkBot'):
@@ -39,14 +39,14 @@ class Control(commands.Cog):
 
     @commands.command()
     async def disable(self, ctx, extension):
-        if (not isAdmin(ctx)):
+        if (not self.isAdmin(ctx)):
             await ctx.send(f'Error: You are not an admin')
         else:
             self.client.unload_extension(extension)
 
     @commands.command()
     async def disableall(self, ctx):
-        if (not isAdmin(ctx)):
+        if (not self.isAdmin(ctx)):
             await ctx.send(f'Error: You are not an admin')
         else:
             for filename in os.listdir('C:/Users/sfg99/3D Objects/StonkBot'):
@@ -57,7 +57,7 @@ class Control(commands.Cog):
     
     @commands.command()
     async def reload(self, ctx, extension):
-        if (not isAdmin(ctx)):
+        if (not self.isAdmin(ctx)):
             await ctx.send(f'Error: You are not an admin')
         else:
             self.client.unload_extension(extension)
@@ -65,7 +65,7 @@ class Control(commands.Cog):
     
     @commands.command()
     async def reloadall(self, ctx):
-        if (not isAdmin(ctx)):
+        if (not self.isAdmin(ctx)):
             await ctx.send(f'Error: You are not an admin')
         else:
             for filename in os.listdir('C:/Users/sfg99/3D Objects/StonkBot'):
@@ -77,7 +77,7 @@ class Control(commands.Cog):
 
     @commands.command()
     async def restart(self, ctx):
-        if (not isAdmin(ctx)):
+        if (not self.isAdmin(ctx)):
             await ctx.send(f'Error: You are not an bot operator')
         else:
             await ctx.send(f'Restarting bot')
