@@ -8,14 +8,22 @@ DIRPATH = os.path.abspath(os.getcwd())
 FS = os.path.sep
 
 
-print("Discord v" + discord.__version__)
+
+# Opening .json files
 with open(DIRPATH + FS + "settings.json") as f: settings = json.load(f)
 with open(DIRPATH + FS + "secret.json") as f: key = json.load(f)
 with open(DIRPATH + FS + "admins.json") as f: admins = json.load(f)
-client = commands.Bot(command_prefix = settings['prefix'])
 
+
+
+# Establishing Client
+client = commands.Bot(command_prefix = settings['prefix'])
 client.admins = admins
 
+
+
+# Initializing Bot
+print("Discord v" + discord.__version__)
 
 @client.event
 async def on_ready(): print(f'{client.user} has connected to Discord!')
@@ -23,12 +31,8 @@ async def on_ready(): print(f'{client.user} has connected to Discord!')
 @client.event
 async def on_command_error(ctx, error): await ctx.send(f'Try $help ({error})')
 
-
-
 for filename in settings['autoLoad']:
     client.load_extension(filename[:-3])
     print(f'Loaded {filename}!')
-
-
 
 client.run(key['token'])

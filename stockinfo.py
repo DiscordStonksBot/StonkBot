@@ -10,14 +10,13 @@ import traceback
 
 
 class StockInfo(commands.Cog):
-
     def __init__(self, client):
         self.client = client
         self.LOCAL_TIMEZONE = datetime.datetime.now(datetime.timezone.utc).astimezone().tzinfo
 
+    # Definitions of pulling and printing
     def getErrorMsg(self, share):
         return (f"Bruh moment. I can't find a stock called {share}. Sort it out, dumbass. (Or something went wrong when fetching data. Nah, it probably your fault)")
-
 
     def getSharePrice(self, share=None):
         if (not share):
@@ -32,28 +31,22 @@ class StockInfo(commands.Cog):
                 traceback.print_exc()
                 return(self.getErrorMsg(share))
 
-
     def getyfInfo(self, share):
         if (not share):
             return share
         return (yf.Ticker(f'{share}').info)
-            
-        
-    
 
-
+    # Discord Bot Commands
     @commands.command()
-    async def shareprice(self, ctx, share=None):
-        await ctx.channel.send (self.getSharePrice(share))
-        
-    
-    @commands.command()
-    async def sp(self, ctx, share=None):
+    async def shareprice(self, ctx, share = None):
         await ctx.channel.send (self.getSharePrice(share))
 
+    @commands.command()
+    async def sp(self, ctx, share = None):
+        await ctx.channel.send (self.getSharePrice(share))
 
     @commands.command()
-    async def shortpercentage(self, ctx, share=None):
+    async def shortpercentage(self, ctx, share = None):
         if (not share):
             await ctx.channel.send(f"C'mon man. Gimme something to work with! (Error: share ticker symbol missing )")
         else:
@@ -69,5 +62,4 @@ class StockInfo(commands.Cog):
                 traceback.print_exc()
                 await ctx.channel.send(self.getErrorMsg(share))
 
-    
 def setup(client): client.add_cog(StockInfo(client))

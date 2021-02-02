@@ -1,8 +1,4 @@
 {
     "prefix" : "$",
     "autoLoad" : ["misc.py", "stockinfo.py", "control.py"]
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 841a63ef1929a496bdeece54465a0e5938c90919
