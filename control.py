@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import os
+import os, sys
 
 
 DIRPATH = os.path.abspath(os.getcwd())
@@ -8,11 +8,26 @@ FS = os.path.sep
 
 
 class Control(commands.Cog):
+
+    def isAdmin(self, ctx):
+        print(ctx.message.author.id)
+        print(self.client.admins)
+        if (str(ctx.message.author.id) in self.client.admins['admins']):
+            return True
+        else:
+            return False
+
+
     def __init__(self, client):
         self.client = client
 
+
     @commands.command()
-    async def enable(self, ctx, extension): self.client.load_extension(extension)
+    async def enable(self, ctx, extension):
+        if (not self.isAdmin(ctx)):
+            await ctx.send(f'Error: You are not an admin')
+        else:
+            self.client.load_extension(extension)
     
     @commands.command()
     async def enableall(self, ctx):
@@ -23,7 +38,11 @@ class Control(commands.Cog):
         await ctx.send(f'Loaded All Cogs!', delete_after = 5)
 
     @commands.command()
-    async def disable(self, ctx, extension): self.client.unload_extension(extension)
+    async def disable(self, ctx, extension):
+        if (not self.isAdmin(ctx)):
+            await ctx.send(f'Error: You are not an admin')
+        else:
+            self.client.unload_extension(extension)
 
     @commands.command()
     async def disableall(self, ctx):
@@ -35,8 +54,11 @@ class Control(commands.Cog):
     
     @commands.command()
     async def reload(self, ctx, extension):
-        self.client.unload_extension(extension)
-        self.client.load_extension(extension)
+        if (not self.isAdmin(ctx)):
+            await ctx.send(f'Error: You are not an admin')
+        else:
+            self.client.unload_extension(extension)
+            self.client.load_extension(extension)
     
     @commands.command()
     async def reloadall(self, ctx):

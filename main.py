@@ -9,10 +9,12 @@ FS = os.path.sep
 
 
 print("Discord v" + discord.__version__)
-with open(DIRPATH+FS+"settings.json") as f: settings = json.load(f)
-with open(DIRPATH+FS+"secret.json") as f: key = json.load(f)
+with open(DIRPATH + FS + "settings.json") as f: settings = json.load(f)
+with open(DIRPATH + FS + "secret.json") as f: key = json.load(f)
+with open(DIRPATH + FS + "admins.json") as f: admins = json.load(f)
 client = commands.Bot(command_prefix = settings['prefix'])
 
+client.admins = admins
 
 
 @client.event
